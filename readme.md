@@ -6,11 +6,12 @@
 # Usage
 * clone the JHU repository into the CoPlot Repo
 `py.exe main.py -c Germany -t 20 -d False`
-* `-c / --country` Select the country (required)
-* `-t / --timerange` Select the last x days (default: 14)
-* `-d / --deaths` Plot the deaths (default: True)
+* `-c / --Country` Select the country (required)
+* `-t / --Timerange` Select the last x days (default: 14)
+* `-d / --Deaths` Plot the deaths (default: True)
+* `-v / --Verbose` Verbose Mode (default: False)
 
-
-# Missing Features: 
+# Missing Features / Known Bugs: 
 * Compare multiple countrys at the same time
-* Give a list of possible countrys
+* Give a list of possible countrys  
+* The Country is Case sensitive (eg Italy, US)

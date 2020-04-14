@@ -5,27 +5,27 @@ import os, csv
 import numpy as np
 import argparse
 import collections
-import inspect
-
 ##### init #####
+
 os.chdir("COVID-19/csse_covid_19_data/csse_covid_19_time_series")
 
 cases = collections.defaultdict(list)
 growth = collections.defaultdict(list)
 deaths = collections.defaultdict(list)
 description = []
-country= "Germany"
 
 ##### Argument parser #####
 parser = argparse.ArgumentParser(description="COVID-19 Data Visualisation Tool")
-parser.add_argument("-c", "--country", metavar="Germany", type=str, help="Name of the state (eg. US, Germany)", required=True)
-parser.add_argument("-t", "--timerange", metavar="14", type=int, help="Show the range of the last x days in the data. Default is 14", default=14)
-parser.add_argument("-d", "--death", type=bool, metavar ="True", help="Show the deaths in the Chart. Default is True", default=True)
-args = parser.parse_args()
-country = args.country
-timeRange = args.timerange
-showDeath = args.death
+parser.add_argument("-c", "--Country", metavar="Germany", type=str, help="Name of the state (eg. US, Germany)", required=True)
+parser.add_argument("-t", "--Timerange", metavar="14", type=int, help="Show the range of the last x days in the data. Default is 14", default=14)
+parser.add_argument("-d", "--Death", type=bool, metavar = "True", help="Show the deaths in the Chart. Default is True", default=True)
+parser.add_argument("-v", "--Verbose", help="Verbose Output of graphs", action="store_true")
 
+args = parser.parse_args()
+country = args.Country
+timeRange = args.Timerange
+showDeath = args.Death
+verbose = args.Verbose
 
 ##### read file #####
 with open("time_series_covid19_confirmed_global.csv") as csv_file:
@@ -75,4 +75,6 @@ axes[0].tick_params(axis="x", rotation=90)
 axes[1].set_ylabel("New infections")
 plt.legend(handles=[blue_patch, gray_patch, blue_line], loc="upper left")
 plt.savefig("../../../%s.png" % country)
-plt.show()
+
+if not verbose:
+    plt.show()
