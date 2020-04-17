@@ -3,6 +3,10 @@
 * mathplotlib
 * [JHU Repository](https://github.com/CSSEGISandData/COVID-19)
 
+# Changelog
+* Country is now in uppercase for compatibility
+* Fixed death visibility
+
 # Usage
 * clone the JHU repository into the CoPlot Repo
 `py.exe main.py -c Germany -t 20 -d False`
